@@ -119,8 +119,5 @@ int main() {
 	cout << "We three are going to be the best of friends!" << endl;
 	cout << "Let's go on an adventure together!" << endl;
 
-
-
-
     return 0;
 }
