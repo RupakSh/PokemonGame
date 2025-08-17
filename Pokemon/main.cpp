@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "PokemonType.hpp"
+#include "Pokemonchoice.hpp"
 using namespace std;
 
 void waitForEnter(){
@@ -14,23 +16,6 @@ void clearScreen(){
         (void)system("clear");
     #endif
 }
-
-// enum classes for the pokemon choice and type
-
-enum class Pokemonchoice {
-    Bulbasaur = 1,
-    Charmander,
-    Squirtle,
-    Pikachu // default choice
-};
-
-enum class PokemonType {
-	Grass,
-    Fire,
-    Water,
-    Electric,
-    Normal // added for the default constructor
-};
 
 // Pokemon class
 
@@ -261,5 +246,5 @@ int main() {
     gameLoop(player);
 
     return 0;
-    
-#include "header.hpp"
+
+}
