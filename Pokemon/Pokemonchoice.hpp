@@ -1,6 +1,6 @@
 // enum classes for the pokemon choice and type
 
-enum class Pokemonchoice {
+enum class PokemonChoice {
     Bulbasaur = 1,
     Charmander,
     Squirtle,

@@ -1,21 +1,14 @@
+#include "PokemonType.hpp"
+#include "PokemonChoice.hpp"
+#include "Utility.hpp"
+
 #include <iostream>
 #include <string>
-#include "PokemonType.hpp"
-#include "Pokemonchoice.hpp"
+#include <limits>
+
 using namespace std;
 
-void waitForEnter(){
-    cout << "Press Enter to continue the conversation." << endl;
-    cin.get();
-}
 
-void clearScreen(){
-    #ifdef _WIN32
-        system("cls");
-    #else
-        (void)system("clear");
-    #endif
-}
 
 // Pokemon class
 
@@ -127,6 +120,7 @@ public:
     void greetPlayer(Player& player) {
         cout << name << ": First, tell me your name?" << endl;
         getline(cin, player.name);
+        Utility::waitForEnter();
         cout << "Hello " << player.name << "! Welcome to the world of Pokemon!" << endl;
         cout << "I am Professor Oak, your guide on this journey." << endl;
         cout << "Let's get started!" << endl;
@@ -171,7 +165,7 @@ void gameLoop(Player &player){
 
     while(keepPlaying){
         // clear console
-        clearScreen();
+        Utility::clearConsole();
 
         // options for the player
         cout << "What would you like to do next " << player.name << "?" << endl;
@@ -214,7 +208,7 @@ void gameLoop(Player &player){
         }
 
         // wait from the screen to clear
-        waitForEnter();
+        Utility::waitForEnter();
     }
 
     cout << "Goodbye," << player.name << "! Thanks for playing!" << endl;
@@ -234,9 +228,9 @@ int main() {
 	// // Greet the player and offer to choose a Pokemon
 
 	Prof.greetPlayer(player);
-    waitForEnter();
+    Utility::waitForEnter();
 	Prof.offerPokemonChoices(player);
-    clearScreen();
+    Utility::clearConsole();
 
     // // final say
 
