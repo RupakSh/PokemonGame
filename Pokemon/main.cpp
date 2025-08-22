@@ -106,6 +106,8 @@ public:
 //     }
 // };
 
+#include "Player.hpp"
+
 // Professor Class
 
 class ProfessorOak {
