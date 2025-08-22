@@ -1,14 +1,19 @@
 #include "Player.hpp"
+#include "PokemonType.hpp"
+#include "PokemonChoice.hpp"
+#include "Utility.hpp"
+
 #include <iostream>
 using namespace std;
 
-
+    // default constructor
     Player::Player() {
         name = "Trainer";
         chosen_pokemon = Pokemon(); // Default Pokemon
         //cout << "A new player named " << name << " has been created using the default constructor!" << endl;
     }
 
+    // parametrized constructor
     Player::Player(string p_name, Pokemon p_chosenPokemon){
         name = p_name;
         chosen_pokemon = p_chosenPokemon;
@@ -16,7 +21,6 @@ using namespace std;
     }
 
     // copy constrctor
-
     Player::Player(const Player &other){
         name = other.name;
         chosen_pokemon = other.chosen_pokemon;
