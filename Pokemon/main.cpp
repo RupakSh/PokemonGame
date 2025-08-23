@@ -1,23 +1,14 @@
-#include "PokemonType.hpp"
-#include "PokemonChoice.hpp"
 #include "Utility.hpp"
-
+#include "Player.hpp"
+#include "Pokemon.hpp"
+#include "PokemonType.hpp"
 #include <iostream>
 #include <string>
 #include <limits>
 
 using namespace std;
 
-
-
-// Pokemon class
-#include "Pokemon.hpp"
-
-// player class
-#include "Player.hpp"
-
 // Professor Class
-
 class ProfessorOak {
 public:
     string name;
