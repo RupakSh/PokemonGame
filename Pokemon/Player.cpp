@@ -1,0 +1,52 @@
+#include "Player.hpp"
+#include "Pokemon.hpp"
+#include "PokemonType.hpp"
+#include "Utility.hpp"
+#include <iostream>
+using namespace std;
+
+    // default constructor
+    Player::Player() {
+        name = "Trainer";
+        chosen_pokemon = Pokemon(); // Default Pokemon
+        //cout << "A new player named " << name << " has been created using the default constructor!" << endl;
+    }
+
+    // parametrized constructor
+    Player::Player(string p_name, Pokemon p_chosenPokemon){
+        name = p_name;
+        chosen_pokemon = p_chosenPokemon;
+        //cout << "Player " << name << " has been created using the parameterized constructor." << endl;
+    }
+
+    // copy constrctor
+    Player::Player(const Player &other){
+        name = other.name;
+        chosen_pokemon = other.chosen_pokemon;
+        //cout << "Player" << other.name << "has been created using the copy constructor." << endl;
+    }
+
+    // Method to choose a pokemon
+    void Player::ChoosePokemon(int choice) {
+        
+        switch ((PokemonChoice)choice) {
+        case PokemonChoice::Bulbasaur: 
+            chosen_pokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
+            //cout << "Very kool!! you chose Bulbasaur!" << endl;
+            break;
+        case PokemonChoice::Charmander:
+            chosen_pokemon = Pokemon("Charmander", PokemonType::Fire, 100);
+            //cout << "Very kool!! you chose Charmander!" << endl;
+            break;
+        case PokemonChoice::Squirtle:
+            chosen_pokemon = Pokemon("Squirtle", PokemonType::Water, 100);
+            //cout << "Very kool!! you chose Squirtle!" << endl;
+            break;
+        default:
+            chosen_pokemon = Pokemon("Pikachu", PokemonType::Electric, 100);
+            //cout << "You chose wrong....so the system choses Charmander for you!" << endl;
+            break;
+        }
+        cout << "Player " << name << " has chosen " << chosen_pokemon.name << " as their pokemon." << endl;
+        Utility::waitForEnter(); // wait for the user to press enter to proceed
+    }

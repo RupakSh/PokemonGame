@@ -1,135 +1,13 @@
+#include "Utility.hpp"
+#include "Player.hpp"
+#include "PokemonType.hpp"
 #include <iostream>
 #include <string>
+#include <limits>
+
 using namespace std;
 
-void waitForEnter(){
-    cout << "Press Enter to continue the conversation." << endl;
-    cin.get();
-}
-
-void clearScreen(){
-    #ifdef _WIN32
-        system("cls");
-    #else
-        (void)system("clear");
-    #endif
-}
-
-// enum classes for the pokemon choice and type
-
-enum class Pokemonchoice {
-    Bulbasaur = 1,
-    Charmander,
-    Squirtle,
-    Pikachu // default choice
-};
-
-enum class PokemonType {
-	Grass,
-    Fire,
-    Water,
-    Electric,
-    Normal // added for the default constructor
-};
-
-// Pokemon class
-
-class Pokemon {
-public:
-	string name;
-    PokemonType type;
-	int health;
-
-	// Default Constructor
-
-    Pokemon() {
-        name = "Pikachu";
-        type = PokemonType::Electric; // Default type
-        health = 10; // Default health
-        //cout << "A new Pokemon has been created with the default constructor!" << endl;
-    }
-
-    Pokemon(string p_name, PokemonType p_type, int p_health) {
-		name = p_name;
-        type = p_type;
-		health = p_health;
-        //cout << "A new Pokemon named "<< name <<" has been created with the parameterized constructor." << endl;
-    }
-
-    //copy constructor
-    Pokemon(const Pokemon& other) {
-        name = other.name;
-        type = other.type;
-        health = other.health;
-        //cout << "A Pokemon has been copied from "<< other.name << endl;
-    }
-
-    // Destructor
-    ~Pokemon() {
-        //cout << "Pokemon " << name << " has been destroyed!" << endl;
-    }
-
-    void Attack() {
-        cout << "Pokemon attacks!" << endl;
-    }
-
-}; 
-
-// Player class
-
-class Player {
-public:
-    string name;
-    Pokemon chosen_pokemon;
-
-    // Default Constructor
-    Player() {
-        name = "Trainer";
-        chosen_pokemon = Pokemon(); // Default Pokemon
-        //cout << "A new player named " << name << " has been created using the default constructor!" << endl;
-    }
-
-    // Parameterized Constructor
-    Player(string p_name, Pokemon p_chosenPokemon){
-        name = p_name;
-        chosen_pokemon = p_chosenPokemon;
-        //cout << "Player " << name << " has been created using the parameterized constructor." << endl;
-    }
-
-    // copy constrctor
-
-    Player(const Player &other){
-        name = other.name;
-        chosen_pokemon = other.chosen_pokemon;
-        //cout << "Player" << other.name << "has been created using the copy constructor." << endl;
-    }
-
-    // Method to choose a pokemon
-    void ChoosePokemon(int choice) {
-        switch (choice) {
-        case 1: 
-            chosen_pokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
-            //cout << "Very kool!! you chose Bulbasaur!" << endl;
-            break;
-        case 2:
-            chosen_pokemon = Pokemon("Charmander", PokemonType::Fire, 100);
-            //cout << "Very kool!! you chose Charmander!" << endl;
-            break;
-        case 3:
-            chosen_pokemon = Pokemon("Squirtle", PokemonType::Water, 100);
-            //cout << "Very kool!! you chose Squirtle!" << endl;
-            break;
-        default:
-            chosen_pokemon = Pokemon("Pikachu", PokemonType::Electric, 100);
-            //cout << "You chose wrong....so the system choses Charmander for you!" << endl;
-            break;
-        }
-        //cout << "Player " << name << " has chosen " << chosen_pokemon.name << " as their pokemon." << endl;
-    }
-};
-
 // Professor Class
-
 class ProfessorOak {
 public:
     string name;
@@ -142,6 +20,7 @@ public:
     void greetPlayer(Player& player) {
         cout << name << ": First, tell me your name?" << endl;
         getline(cin, player.name);
+        Utility::waitForEnter();
         cout << "Hello " << player.name << "! Welcome to the world of Pokemon!" << endl;
         cout << "I am Professor Oak, your guide on this journey." << endl;
         cout << "Let's get started!" << endl;
@@ -186,7 +65,7 @@ void gameLoop(Player &player){
 
     while(keepPlaying){
         // clear console
-        clearScreen();
+        Utility::clearConsole();
 
         // options for the player
         cout << "What would you like to do next " << player.name << "?" << endl;
@@ -229,7 +108,7 @@ void gameLoop(Player &player){
         }
 
         // wait from the screen to clear
-        waitForEnter();
+        Utility::waitForEnter();
     }
 
     cout << "Goodbye," << player.name << "! Thanks for playing!" << endl;
@@ -249,9 +128,9 @@ int main() {
 	// // Greet the player and offer to choose a Pokemon
 
 	Prof.greetPlayer(player);
-    waitForEnter();
+    Utility::waitForEnter();
 	Prof.offerPokemonChoices(player);
-    clearScreen();
+    Utility::clearConsole();
 
     // // final say
 
@@ -261,4 +140,5 @@ int main() {
     gameLoop(player);
 
     return 0;
+
 }
