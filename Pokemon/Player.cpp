@@ -1,6 +1,7 @@
 #include "Player.hpp"
 #include "Pokemon.hpp"
 #include "PokemonType.hpp"
+#include "Utility.hpp"
 #include <iostream>
 using namespace std;
 
@@ -27,16 +28,17 @@ using namespace std;
 
     // Method to choose a pokemon
     void Player::ChoosePokemon(int choice) {
-        switch (choice) {
-        case 1: 
+        
+        switch ((PokemonChoice)choice) {
+        case PokemonChoice::Bulbasaur: 
             chosen_pokemon = Pokemon("Bulbasaur", PokemonType::Grass, 100);
             //cout << "Very kool!! you chose Bulbasaur!" << endl;
             break;
-        case 2:
+        case PokemonChoice::Charmander:
             chosen_pokemon = Pokemon("Charmander", PokemonType::Fire, 100);
             //cout << "Very kool!! you chose Charmander!" << endl;
             break;
-        case 3:
+        case PokemonChoice::Squirtle:
             chosen_pokemon = Pokemon("Squirtle", PokemonType::Water, 100);
             //cout << "Very kool!! you chose Squirtle!" << endl;
             break;
@@ -46,4 +48,5 @@ using namespace std;
             break;
         }
         cout << "Player " << name << " has chosen " << chosen_pokemon.name << " as their pokemon." << endl;
+        Utility::waitForEnter(); // wait for the user to press enter to proceed
     }
