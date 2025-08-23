@@ -1,9 +1,10 @@
 #include <string>
-#include "PokemonType.hpp"
 
 using namespace std;
 
-class Pokemon{
+enum class PokemonType;
+
+class Pokemon {
     public:
 	string name;
     PokemonType type;
