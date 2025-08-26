@@ -1,9 +1,10 @@
+#pragma once
+
 #include <string>
 #include "PokemonChoice.hpp"
-//#include "PokemonType.hpp"
+#include "PokemonType.hpp"
 using namespace std;
 
-enum PokemonType;
 
 class Pokemon {
     public:
