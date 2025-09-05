@@ -14,6 +14,8 @@ public:
     // Parameterized Constructor
     Player(string p_name, Pokemon p_chosenPokemon);
 
+    Player(const Player &other);
+
     // Method to choose a pokemon
     void ChoosePokemon(int choice);
 };

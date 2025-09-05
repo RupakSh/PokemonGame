@@ -2,12 +2,6 @@
 #include <iostream>
 using namespace std;
 
-class Pokemon {
-public:
-	string name;
-    PokemonType type;
-	int health;
-
 	// Default Constructor
     Pokemon::Pokemon() {
         name = "Pikachu";
@@ -39,4 +33,3 @@ public:
     void Pokemon::Attack() {
         cout << "Pokemon attacks!" << endl;
     }
-};
