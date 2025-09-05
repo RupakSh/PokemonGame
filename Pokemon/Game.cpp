@@ -1,26 +1,29 @@
-#include "Player.hpp"
-#include "Utility.hpp"
 #include "Game.hpp"
-#include "Grass.hpp"
-#include <iostream>
+#include "Player.hpp"
+#include "PokemonType.hpp"
+#include "Utility.hpp"
+#include "WildEncounterManager.hpp"
 
+#include <iostream>
 using namespace std;
 
-class Player;
+//class Player;
 
-Grass forestGrass = {
-    "Forest",
+Game::Game(){
+    forestGrass = {"Forest",
     {{"Pidgey", PokemonType::Normal, 40}, {"Caterpie", PokemonType::Bug, 35}},
-    70
-};
+    70};
 
-Grass caveGrass = {
-    "Cave",
-    {{"Zubat", PokemonType::Poison, 30}, {"Geodude", PokemonType::Rock, 50}},
-    80
-};
+    // caveGrass = {"Cave",
+    // {{"Zubat", PokemonType::Poison, 30}, 
+    // {"Geodude", PokemonType::Rock, 50}},
+    // 80};
 
-void gameLoop(Player &player){
+}
+
+
+void Game::gameLoop(Player &player){
+    
     bool keepPlaying = true;
     int choice;
 
@@ -41,7 +44,15 @@ void gameLoop(Player &player){
         // switch loop
         switch (choice)
         {
-        case 1:
+        case 1: {
+            // Create a scope within case 1
+            WildEncounterManager encounterManager;
+            Pokemon encounteredPokemon =
+            encounterManager.getRandomPokemonFromGrass(forestGrass);
+            cout << "A wild " << encounteredPokemon.name << " appeared!\n";
+            break;    
+        }
+
             cout << "Look around....all the wild pokemons are on vacation it seems. Try again later?" << endl;
             break;
         case 2:

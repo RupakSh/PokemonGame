@@ -1,14 +1,18 @@
+#include "Grass.hpp"
 
 
 class Player;
 
 class Game {
 
-public:
+    private:
+        Grass forestGrass;
 
-Game();
-// game loop
-void gameLoop(Player &player);
+    public:
+
+        Game();
+        // game loop
+        void gameLoop(Player &player);
 
 };
 
